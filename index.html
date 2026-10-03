@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Emily ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: radial-gradient(circle at top, #350016, #080008 65%);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Background stars */
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: .2; }
+    to { opacity: 1; }
+}
+
+/* Main */
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    position: relative;
+}
+
+.card {
+    width: min(900px, 95%);
+    padding: 60px 30px;
+    border-radius: 35px;
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow:
+        0 0 80px rgba(255,0,90,.18),
+        inset 0 0 40px rgba(255,255,255,.03);
+    transform-style: preserve-3d;
+    animation: appear 1.5s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.small {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #ff9fbd;
+    font-size: 12px;
+}
+
+h1 {
+    margin-top: 15px;
+    font-size: clamp(55px, 12vw, 120px);
+    letter-spacing: 8px;
+    background: linear-gradient(90deg, #fff, #ff8fb2, #fff);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shine 4s infinite;
+    text-shadow: 0 0 40px rgba(255,70,130,.35);
+}
+
+@keyframes shine {
+    0% { background-position: 0%; }
+    50% { background-position: 100%; }
+    100% { background-position: 0%; }
+}
+
+.subtitle {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #ffd5e1;
+}
+
+.message {
+    max-width: 650px;
+    margin: 35px auto;
+    line-height: 2;
+    font-size: 17px;
+    color: #eee;
+}
+
+/* Heart */
+.heart {
+    width: 80px;
+    height: 80px;
+    margin: 30px auto;
+    position: relative;
+    transform: rotate(-45deg);
+    background: #ff245f;
+    animation: heartbeat 1.2s infinite;
+    box-shadow: 0 0 45px #ff245f;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #ff245f;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -40px;
+    left: 0;
+}
+
+.heart::after {
+    left: 40px;
+    top: 0;
+}
+
+@keyframes heartbeat {
+    0%,100% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.18); }
+}
+
+/* Button */
+button {
+    border: none;
+    padding: 16px 35px;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #ff165d, #ff5f91);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 10px 35px rgba(255,20,90,.3);
+    transition: .3s;
+}
+
+button:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 15px 45px rgba(255,20,90,.5);
+}
+
+/* Secret message */
+.secret {
+    max-height: 0;
+    overflow: hidden;
+    transition: 1s ease;
+    opacity: 0;
+}
+
+.secret.show {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 30px;
+}
+
+.secret p {
+    font-size: 20px;
+    line-height: 2;
+    color: #ffd6e2;
+}
+
+/* Counter */
+.counter {
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.box {
+    width: 130px;
+    padding: 20px 10px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+.number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ff8bab;
+}
+
+.label {
+    font-size: 11px;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Floating hearts */
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 20px;
+    animation: float 7s linear infinite;
+    pointer-events: none;
+    opacity: .7;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+footer {
+    margin-top: 45px;
+    color: #777;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="container">
+
+<div class="card">
+
+    <div class="small">A little universe made for you</div>
+
+    <h1>EMILY</h1>
+
+    <div class="subtitle">
+        The girl who became my favorite part of life.
+    </div>
+
+    <div class="heart"></div>
+
+    <p class="message">
+        If I could turn every feeling I have for you into a star,
+        the sky would never be dark again.
+        <br><br>
+
+        You are not just someone I love.
+        You are the person my heart keeps choosing,
+        again and again, every single day.
+    </p>
+
+    <button onclick="revealLove()">
+        Open something from my heart ❤️
+    </button>
+
+    <div class="secret" id="secret">
+
+        <p>
+            Emily...
+            <br><br>
+
+            I don't know what the future will look like,
+            but I know one thing.
+            <br><br>
+
+            Whenever I imagine my happiest future,
+            somehow...
+            <br>
+            you're there.
+            <br><br>
+
+            I want to be the person who makes you feel loved
+            on your worst days,
+            smiles with you on your best days,
+            and reminds you that you are never alone.
+            <br><br>
+
+            I love you more than these words could ever explain.
+            ❤️
+        </p>
+
+    </div>
+
+    <div class="counter">
+
+        <div class="box">
+            <div class="number" id="days">0</div>
+            <div class="label">Days</div>
+        </div>
+
+        <div class="box">
+            <div class="number" id="hours">0</div>
+            <div class="label">Hours</div>
+        </div>
+
+        <div class="box">
+            <div class="number" id="minutes">0</div>
+            <div class="label">Minutes</div>
+        </div>
+
+        <div class="box">
+            <div class="number" id="seconds">0</div>
+            <div class="label">Seconds</div>
+        </div>
+
+    </div>
+
+    <footer>
+        MADE WITH LOVE • ONLY FOR EMILY ❤️
+    </footer>
+
+</div>
+</div>
+
+<script>
+
+/* Stars */
+for(let i = 0; i < 120; i++){
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    document.querySelector(".stars")
+        .appendChild(star);
+}
+
+
+/* Secret message */
+function revealLove(){
+
+    const secret = document.getElementById("secret");
+
+    secret.classList.toggle("show");
+
+}
+
+
+/* Love counter
+   Change this date to the date
+   your story started.
+*/
+
+const startDate = new Date("2024-01-01T00:00:00");
+
+function updateCounter(){
+
+    const now = new Date();
+
+    const difference = now - startDate;
+
+    const seconds =
+        Math.floor(difference / 1000);
+
+    const days =
+        Math.floor(seconds / 86400);
+
+    const hours =
+        Math.floor((seconds % 86400) / 3600);
+
+    const minutes =
+        Math.floor((seconds % 3600) / 60);
+
+    const secs =
+        seconds % 60;
+
+    document.getElementById("days")
+        .textContent = days;
+
+    document.getElementById("hours")
+        .textContent = hours;
+
+    document.getElementById("minutes")
+        .textContent = minutes;
+
+    document.getElementById("seconds")
+        .textContent = secs;
+}
+
+setInterval(updateCounter, 1000);
+
+updateCounter();
+
+
+/* Floating hearts */
+
+function createHeart(){
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "floating-heart";
+
+    heart.innerHTML =
+        ["❤️","💗","💕","💖","💘"]
+        [Math.floor(Math.random()*5)];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (5 + Math.random()*5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 10000);
+}
+
+setInterval(createHeart, 600);
+
+</script>
+
+</body>
+</html>
